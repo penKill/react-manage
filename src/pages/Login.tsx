@@ -2,6 +2,7 @@ import React, {Component, createRef, RefObject} from "react";
 import {Form, FormInstance, Checkbox, Button, Input, Space} from "antd";
 import '../static/css/login.css'
 import axios from "axios";
+import {success} from '../util/result'
 
 export default class Login extends Component<any, any> {
     fromRef: RefObject<FormInstance>
@@ -15,14 +16,14 @@ export default class Login extends Component<any, any> {
     login = (form: any) => {
         axios.post('/login', {username: form.username, password: form.password}).then(
             response => {
-                console.log('成功')
+                if (success(response.data)) {
+                    console.log('成功',response.data)
 
-                console.log(response)
+                }
             },
             error => {
-                console.log('失败')
+                console.log('失败',error)
 
-                console.log(error)
             }
         )
     }
