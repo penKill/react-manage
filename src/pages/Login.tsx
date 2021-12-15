@@ -1,12 +1,12 @@
 import React, {Component, createRef, RefObject} from "react";
 import {Form, FormInstance, Checkbox, Button, Input, Space} from "antd";
 import '../static/css/login.css'
-import axios from "axios";
+import axios from "../util/axios";
 import {success} from '../util/result'
+import storage from '../util/storageUtil'
 
 export default class Login extends Component<any, any> {
     fromRef: RefObject<FormInstance>
-
 
     constructor(props: any, context: any) {
         super(props, context);
@@ -17,12 +17,11 @@ export default class Login extends Component<any, any> {
         axios.post('/login', {username: form.username, password: form.password}).then(
             response => {
                 if (success(response.data)) {
-                    console.log('成功',response.data)
-
+                    storage.set('token', 'dsadsad')
                 }
             },
             error => {
-                console.log('失败',error)
+                console.log('失败', error)
 
             }
         )

@@ -1,10 +1,13 @@
 import React from 'react';
-import Login from "./pages/Login";
+import View from './compoments/View'
+import {BrowserRouter as Router} from "react-router-dom";
 
 function App() {
     return (
         <>
-            <Login/>
+            <Router>
+                <View/>
+            </Router>
         </>
     );
 }
