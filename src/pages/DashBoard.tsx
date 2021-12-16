@@ -1,7 +1,9 @@
 import React, {Component,} from "react";
 
-
-export default class Main extends Component {
+/**
+ * 仪表盘
+ */
+export default class DashBoard extends Component {
     render() {
         return (
             <div>Main</div>

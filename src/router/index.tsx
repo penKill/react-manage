@@ -1,15 +1,15 @@
 import {ReactNode, lazy, ReactElement} from "react";
 
-import Lee from "../pages/Lee";
+import DashBoard from "../pages/DashBoard";
 
-const Home = lazy(() => import("../pages/Home"));
-const UserDetail = lazy(() => import("../pages/UserDetail"));
+const Home = lazy(() => import("../pages/index/Home"));
+const UserDetail = lazy(() => import("../pages/user/UserDetail"));
 const Welcome = lazy(() => import( "../pages/Welcome"))
 const Login = lazy(() => import( "../pages/Login"))
 const Page404 = lazy(() => import( "../pages/Page404"))
 
 //定义路由的格式信息
-interface IRouter {
+export interface IRouter {
     //id信息
     id: number
     //路径信息
@@ -18,63 +18,67 @@ interface IRouter {
     title: string
     //是否
     exact?: boolean
-    component?: ReactElement
+    component?: ReactNode
     children?: IRouter[]
 }
 
-// 全部的路由信息
+// 全部需要有权限的路由 随便写的假页面
 export const router: IRouter[] = [
     {
-        id: 0,
-        path: '/login',
-        title: 'login page',
-        exact: true,
-        component: <Login/>
-    },
-    {
         id: 1,
-        path: '/',
-        title: 'index page',
+        path: '/dashboard',
+        title: '首页',
         exact: true,
-        component: <Home/>
-    },
-    {
-        id: 3,
-        path: '/welcome',
-        title: 'Welcome page',
-        component: <Welcome/>
-    },
-    {
-        id: 4,
-        path: '/lee',
-        title: 'Lee page',
-        component: <Lee/>
+        component: <DashBoard/>
     },
     {
         id: 2,
-        path: '/user',
-        title: 'user list',
+        path: '/home',
+        title: '仪表盘2',
+        exact: true,
         children: [
             {
-
-                id: 3,
-                path: '/user/detail/3',
-                title: 'user detail 3 page',
-                component: <UserDetail/>
+                id: 11,
+                path: '/welcome',
+                title: '仪表盘2',
+                exact: true,
+                component: <Welcome/>
             },
             {
-
-                id: 4,
-                path: '/user/detail/4',
-                title: 'user detail 4 page',
+                id: 12,
+                path: '/userdetail',
+                title: '仪表盘2',
+                exact: true,
                 component: <UserDetail/>
             }
         ]
     },
     {
-        id: 999,
+        id: 3,
+        path: '/home',
+        title: '仪表盘2',
+        exact: true,
+        component: <Home/>
+    },
+]
+//常用不需权限即可展示的页面 比如登录页面 错误页面等等
+export const normal_router: IRouter[] = [
+    {
+        id: 9999,
+        path: '/login',
+        title: '登录页',
+        component: <Login/>
+    },
+    {
+        id: 9998,
         path: '*',
         title: '404',
+        component: <Page404/>
+    },
+    {
+        id: 9997,
+        path: '/403',
+        title: '403',
         component: <Page404/>
     },
 ]
