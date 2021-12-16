@@ -1,8 +1,9 @@
 import React, {Component, Suspense} from 'react';
 import {router, normal_router} from '../router'
 import MainLayOut from './layout/MainLayOut'
+import Page404 from '../pages/error/Page404'
 
-import {BrowserRouter as Routes, Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Routes, Switch, Route} from 'react-router-dom'
 // 讲所有的路由信息渲染到app容器中
 export default class View extends Component {
     render() {

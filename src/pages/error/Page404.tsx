@@ -1,6 +1,6 @@
 import {Result, Button} from 'antd';
 import React, {Component} from 'react';
-import Home from './index/Home'
+import Home from '../index/Home'
 import {} from 'react-router-dom'
 
 class Page404 extends Component {

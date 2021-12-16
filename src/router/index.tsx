@@ -6,7 +6,7 @@ const Home = lazy(() => import("../pages/index/Home"));
 const UserDetail = lazy(() => import("../pages/user/UserDetail"));
 const Welcome = lazy(() => import( "../pages/Welcome"))
 const Login = lazy(() => import( "../pages/Login"))
-const Page404 = lazy(() => import( "../pages/Page404"))
+const Page404 = lazy(() => import( "../pages/error/Page404"))
 
 //定义路由的格式信息
 export interface IRouter {
@@ -67,18 +67,21 @@ export const normal_router: IRouter[] = [
         id: 9999,
         path: '/login',
         title: '登录页',
+        exact: true,
         component: <Login/>
     },
     {
         id: 9998,
-        path: '*',
+        path: '/404',
         title: '404',
+        exact: true,
         component: <Page404/>
     },
     {
         id: 9997,
         path: '/403',
         title: '403',
+        exact: true,
         component: <Page404/>
     },
 ]
